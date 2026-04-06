@@ -14,7 +14,11 @@ container_tag: latest
 
 # Alternative: Use image object instead of ECR module
 # image:
+<<<<<<< HEAD
 #   repository: "<account-id>.dkr.ecr.us-east-1.amazonaws.com/my-app"
+=======
+#   repository: "123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app"
+>>>>>>> 35b3497 (Commited old .git files which no longer exist)
 #   tag: "test"
 
 #### Fargate Resources ####
