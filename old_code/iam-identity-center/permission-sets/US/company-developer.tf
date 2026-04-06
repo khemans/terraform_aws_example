@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "company-developer" {
   statement {
     # principals {
     #   type = "AWS"
-    #   identifiers = ["846825045253"]
+    #   identifiers = ["<ebi-account-id>"]
     # }
     effect = "Allow"
     not_actions = [

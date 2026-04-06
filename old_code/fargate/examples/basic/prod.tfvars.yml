@@ -14,7 +14,7 @@ container_tag: latest
 
 # Alternative: Use image object instead of ECR module
 # image:
-#   repository: "123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app"
+#   repository: "<account-id>.dkr.ecr.us-east-1.amazonaws.com/my-app"
 #   tag: "latest"
 
 #### Fargate Resources ####

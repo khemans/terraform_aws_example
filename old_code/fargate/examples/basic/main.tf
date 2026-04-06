@@ -43,7 +43,7 @@ data "aws_subnets" "public" {
 
 # ECS Cluster
 module "cluster" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//cluster?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//cluster?ref=main"
 
   cluster_name = "${var.project_name}-${var.environment}"
   tags         = var.tags
@@ -51,7 +51,7 @@ module "cluster" {
 
 # IAM Roles
 module "iam" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//iam?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//iam?ref=main"
 
   execution_role_name = "${var.project_name}-execution-${var.environment}"
   task_role_name      = "${var.project_name}-task-${var.environment}"
@@ -60,7 +60,7 @@ module "iam" {
 
 # CloudWatch Logs
 module "logs" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//logs?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//logs?ref=main"
 
   log_group_name    = "/ecs/${var.project_name}-${var.environment}"
   retention_in_days = var.log_retention_days
@@ -69,7 +69,7 @@ module "logs" {
 
 # ECR Repository
 module "ecr" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//ecr?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//ecr?ref=main"
 
   repository_name = "${var.project_name}-${var.environment}"
   tags            = var.tags
@@ -77,7 +77,7 @@ module "ecr" {
 
 # Security Groups
 module "security_groups" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//security-groups?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//security-groups?ref=main"
 
   vpc_id                  = data.aws_vpc.main.id
   lb_security_group_name  = "${var.project_name}-alb-${var.environment}"
@@ -89,7 +89,7 @@ module "security_groups" {
 
 # Application Load Balancer
 module "alb" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//alb?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//alb?ref=main"
 
   alb_name          = "${var.project_name}-alb-${var.environment}"
   subnet_ids        = data.aws_subnets.public.ids
@@ -100,7 +100,7 @@ module "alb" {
 
 # Target Group
 module "target_group" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//target-group?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//target-group?ref=main"
 
   target_group_name = "${var.project_name}-tg-${var.environment}"
   vpc_id            = data.aws_vpc.main.id
@@ -135,7 +135,7 @@ locals {
 }
 
 module "task_definition" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//task-definition?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//task-definition?ref=main"
 
   family             = "${var.project_name}-${var.environment}"
   execution_role_arn = module.iam.execution_role_arn
@@ -148,7 +148,7 @@ module "task_definition" {
 
 # ECS Service
 module "service" {
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//service?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//service?ref=main"
 
   service_name           = "${var.project_name}-service-${var.environment}"
   cluster_name           = module.cluster.cluster_name
@@ -166,7 +166,7 @@ module "service" {
 # Auto Scaling (optional)
 module "autoscaling" {
   count  = var.enable_autoscaling ? 1 : 0
-  source = "git::ssh://git@gitlab.com/remaxllc/cloud-infrastructure/global-modules/fargate.git//autoscaling?ref=main"
+  source = "git::ssh://git@gitlab.com/company/cloud-infrastructure/global-modules/fargate.git//autoscaling?ref=main"
 
   service_name  = module.service.service_name
   cluster_name  = module.cluster.cluster_name

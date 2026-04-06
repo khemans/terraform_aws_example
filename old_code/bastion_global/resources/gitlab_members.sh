@@ -12,8 +12,8 @@ echo "" >> $EC2USER
 
 # GitLab Configuration
 GITLAB_URL="https://gitlab.com/api/v4"
-ACCESS_TOKEN=$REDACTED
-GROUP_ID="redacted"
+ACCESS_TOKEN=$GITLAB_ACCESS_TOKEN
+GROUP_ID="<gitlab-group-id>"
 #SUBGROUP_ID=""
 #TERTIARYGROUP_ID=""
 

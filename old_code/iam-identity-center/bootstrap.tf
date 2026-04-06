@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "terraform_state" {
 }
 
 resource "aws_s3_bucket_versioning" "terraform_state_us" {
-  count = local.instance_arn == "arn:aws:sso:::instance/ssoins-redacted" ? 1 : 0
+  count = local.instance_arn == "arn:aws:sso:::instance/<us-sso-instance-id>" ? 1 : 0
   bucket = aws_s3_bucket.terraform_state.id
   versioning_configuration {
     status = "Disabled"
@@ -11,7 +11,7 @@ resource "aws_s3_bucket_versioning" "terraform_state_us" {
 }
 
 resource "aws_s3_bucket_versioning" "terraform_state_ca" {
-  count = local.instance_arn == "arn:aws:sso:::instance/ssoins-redacted" ? 1 : 0
+  count = local.instance_arn == "arn:aws:sso:::instance/<ca-sso-instance-id>" ? 1 : 0
   bucket = aws_s3_bucket.terraform_state.id
   versioning_configuration {
     status = "Enabled"

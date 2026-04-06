@@ -31,8 +31,8 @@ BASTION="/home/bastion/.ssh/authorized_keys"
 
 # GitLab Configuration
 GITLAB_URL="https://gitlab.com/api/v4"
-ACCESS_TOKEN="redacted"
-GROUP_ID="redacted"
+ACCESS_TOKEN="<gitlab-access-token>"
+GROUP_ID="<gitlab-group-id>"
 
 echo "" > $EC2USER
 echo "" > $BASTION

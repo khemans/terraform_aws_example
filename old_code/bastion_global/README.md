@@ -12,7 +12,7 @@ This module was designed to deploy a Bastion host wherever it is needed, just by
 
 ## Configure Terraform and Gitlab
 1. If creating at the top level of a project, create a new project in the target repos. If not proceed to step 2.
-2. Copy example directory terraform files from: https://gitlab.com/remaxllc/cloud-infrastructure/global-modules/bastion_global
+2. Copy example directory terraform files from: https://gitlab.com/company/cloud-infrastructure/global-modules/bastion_global
 3. Paste into target repos
 4. Remove files, if they exist: ENV.tfvars.json, ENV-bucket.conf, .terraform.lock.hcl, .terraform (directory)
 5. Create gitlab variables at the sub-group level containing the Bastion repos. Add the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY you created for user 'gitlab' in step 3 of AWS account setup
