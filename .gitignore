@@ -25,3 +25,9 @@ terraform.rc
 
 # Lock file (optional: commit for reproducibility — uncomment to ignore)
 # .terraform.lock.hcl
+
+# Makefile-generated files
+*.tfvars.json
+*.tfplan
+*-bucket.conf
+*.lock.hcl.bak
