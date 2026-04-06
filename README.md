@@ -1,4 +1,4 @@
-# Terraform interview practice (AWS)
+# Terraform practice (AWS)
 
 Dehydrated root modules under `modules/` compose into smaller **examples** and full **live** stacks. Region, naming, and tags are driven by variables so you can reuse the same code for multiple services and environments.
 

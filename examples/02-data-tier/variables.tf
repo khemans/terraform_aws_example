@@ -24,3 +24,15 @@ variable "extra_tags" {
   type    = map(string)
   default = {}
 }
+
+variable "enable_aurora" {
+  type        = bool
+  description = "Deploy the Aurora RDS cluster. Can be disabled in dev to save cost."
+  default     = true
+}
+
+variable "enable_redis" {
+  type        = bool
+  description = "Deploy the ElastiCache Redis cluster. Can be disabled in dev to save cost."
+  default     = true
+}

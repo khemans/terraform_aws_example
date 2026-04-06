@@ -10,6 +10,12 @@ ssh_ingress_cidr = "0.0.0.0/0"
 
 eks_cluster_version = "1.29"
 
+# Disable expensive services in dev to reduce cost
+enable_bastion = false
+enable_eks     = false
+enable_aurora  = false
+enable_redis   = false
+
 extra_tags = {
   Stack = "full"
 }

@@ -9,3 +9,7 @@ availability_zones = ["us-east-1a", "us-east-1b"]
 ssh_ingress_cidr = "203.0.113.10/32"
 
 eks_cluster_version = "1.29"
+
+# All services enabled in prod
+enable_bastion = true
+enable_eks     = true

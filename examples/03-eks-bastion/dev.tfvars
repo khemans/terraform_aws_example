@@ -9,3 +9,7 @@ availability_zones = ["us-east-1a", "us-east-1b"]
 ssh_ingress_cidr = "0.0.0.0/0"
 
 eks_cluster_version = "1.29"
+
+# Disable expensive services in dev
+enable_bastion = false
+enable_eks     = false

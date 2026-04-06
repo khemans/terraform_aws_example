@@ -34,3 +34,15 @@ variable "extra_tags" {
   type    = map(string)
   default = {}
 }
+
+variable "enable_bastion" {
+  type        = bool
+  description = "Deploy the EC2 bastion host. Can be disabled in dev to save cost."
+  default     = true
+}
+
+variable "enable_eks" {
+  type        = bool
+  description = "Deploy the EKS cluster. Can be disabled in dev to save cost."
+  default     = true
+}

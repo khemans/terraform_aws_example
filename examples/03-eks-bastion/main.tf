@@ -9,6 +9,7 @@ module "network" {
 }
 
 module "bastion" {
+  count  = var.enable_bastion ? 1 : 0
   source = "../../modules/ec2_bastion"
 
   project_name     = var.project_name
@@ -20,12 +21,13 @@ module "bastion" {
 }
 
 module "eks" {
+  count  = var.enable_eks ? 1 : 0
   source = "../../modules/eks"
 
-  project_name         = var.project_name
-  environment          = var.environment
-  vpc_id               = module.network.vpc_id
-  private_subnet_ids   = module.network.private_subnet_ids
-  cluster_version      = var.eks_cluster_version
-  tags                 = var.extra_tags
+  project_name       = var.project_name
+  environment        = var.environment
+  vpc_id             = module.network.vpc_id
+  private_subnet_ids = module.network.private_subnet_ids
+  cluster_version    = var.eks_cluster_version
+  tags               = var.extra_tags
 }

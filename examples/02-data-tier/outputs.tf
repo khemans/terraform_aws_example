@@ -3,9 +3,9 @@ output "vpc_id" {
 }
 
 output "aurora_endpoint" {
-  value = module.aurora.cluster_endpoint
+  value = var.enable_aurora ? module.aurora[0].cluster_endpoint : null
 }
 
 output "redis_primary_endpoint" {
-  value = module.redis.primary_endpoint_address
+  value = var.enable_redis ? module.redis[0].primary_endpoint_address : null
 }

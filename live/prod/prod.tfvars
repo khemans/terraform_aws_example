@@ -10,6 +10,12 @@ ssh_ingress_cidr = "203.0.113.10/32"
 
 eks_cluster_version = "1.29"
 
+# All services enabled in prod
+enable_bastion = true
+enable_eks     = true
+enable_aurora  = true
+enable_redis   = true
+
 extra_tags = {
   Stack = "full"
 }
