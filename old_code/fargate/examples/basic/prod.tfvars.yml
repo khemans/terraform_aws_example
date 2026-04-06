@@ -1,0 +1,64 @@
+#### Required Variables ####
+project_name: my-app
+environment: prod
+vpc_name: my-vpc-prod
+
+#### AWS Configuration ####
+region: us-east-1
+aws_region: us-east-1
+availability_zones: ["a", "b", "c"]
+
+#### Container Configuration ####
+container_port: 80
+container_tag: latest
+
+# Alternative: Use image object instead of ECR module
+# image:
+#   repository: "123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app"
+#   tag: "latest"
+
+#### Fargate Resources ####
+fargate_cpu: 1024
+fargate_memory: 2048
+desired_count: 3
+
+#### Health Check ####
+health_check_path: "/"
+
+#### Logging ####
+log_retention_days: 90
+
+#### Auto Scaling ####
+enable_autoscaling: true
+min_capacity: 3
+max_capacity: 20
+
+#### Container Environment Variables ####
+container_environment: []
+# Example:
+# container_environment:
+#   - name: "NODE_ENV"
+#     value: "production"
+#   - name: "API_URL"
+#     value: "https://api.example.com"
+
+#### Remote State ####
+kubernetes_remote_state_bucket: ""
+kubernetes_remote_state_workspace: prod
+
+#### Tags ####
+tags:
+  product: 
+  service: my-app
+  repo: Company/my-repo
+  project: my-project
+  resource: fargate
+  env: prod
+  terraform: true
+  cc: 0
+  core-aws: false
+  global: false
+  us: true
+  canada: false
+  luxury: false
+

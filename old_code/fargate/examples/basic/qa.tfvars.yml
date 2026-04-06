@@ -1,0 +1,64 @@
+#### Required Variables ####
+project_name: my-app
+environment: qa
+vpc_name: my-vpc-qa
+
+#### AWS Configuration ####
+region: us-east-1
+aws_region: us-east-1
+availability_zones: ["a", "b", "c"]
+
+#### Container Configuration ####
+container_port: 80
+container_tag: latest
+
+# Alternative: Use image object instead of ECR module
+# image:
+#   repository: "123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app"
+#   tag: "qa"
+
+#### Fargate Resources ####
+fargate_cpu: 512
+fargate_memory: 1024
+desired_count: 2
+
+#### Health Check ####
+health_check_path: "/"
+
+#### Logging ####
+log_retention_days: 30
+
+#### Auto Scaling ####
+enable_autoscaling: true
+min_capacity: 2
+max_capacity: 10
+
+#### Container Environment Variables ####
+container_environment: []
+# Example:
+# container_environment:
+#   - name: "NODE_ENV"
+#     value: "qa"
+#   - name: "API_URL"
+#     value: "https://api-qa.example.com"
+
+#### Remote State ####
+kubernetes_remote_state_bucket: ""
+kubernetes_remote_state_workspace: nonprod
+
+#### Tags ####
+tags:
+  product: 
+  service: my-app
+  repo: company/my-repo
+  project: my-project
+  resource: fargate
+  env: qa
+  terraform: true
+  cc: 0
+  core-aws: false
+  global: false
+  us: true
+  canada: false
+  luxury: false
+
