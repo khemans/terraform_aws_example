@@ -1,0 +1,19 @@
+key_name: ""
+subnet_id: ""
+bucket_name: ""
+
+tags:
+    name     : 
+    product  : 
+    service  : AWS
+    repo     : 
+    project  : 
+    resource : 
+    env      : 
+    terraform: true
+    cc       : 0
+    core-aws : true
+    global   : true
+    us       : true
+    canada   : true
+    luxury   : true
