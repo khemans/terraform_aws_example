@@ -41,6 +41,12 @@ variable "num_cache_nodes" {
   default = 1
 }
 
+variable "redis_port" {
+  type    = number
+  default = 6379
+  description = "The port on which Redis accepts connections."
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

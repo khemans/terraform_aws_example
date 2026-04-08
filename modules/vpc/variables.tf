@@ -16,7 +16,25 @@ variable "vpc_cidr" {
 
 variable "availability_zones" {
   type        = list(string)
-  description = "Exactly two AZ names for public/private subnet pairs."
+  description = "List of AZ names for subnets."
+}
+
+variable "public_subnets" {
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+  }))
+  description = "Map of public subnet configurations. Key is subnet name, value contains CIDR and AZ."
+  default     = {}
+}
+
+variable "private_subnets" {
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+  }))
+  description = "Map of private subnet configurations. Key is subnet name, value contains CIDR and AZ."
+  default     = {}
 }
 
 variable "tags" {

@@ -17,8 +17,8 @@ resource "aws_security_group" "aurora" {
     for_each = var.allowed_security_group_ids
     content {
       description     = "From ${ingress.value}"
-      from_port       = 5432
-      to_port         = 5432
+      from_port       = var.database_port
+      to_port         = var.database_port
       protocol        = "tcp"
       security_groups = [ingress.value]
     }
@@ -28,8 +28,8 @@ resource "aws_security_group" "aurora" {
     for_each = var.allowed_cidr_blocks
     content {
       description = "From CIDR ${ingress.value}"
-      from_port   = 5432
-      to_port     = 5432
+      from_port   = var.database_port
+      to_port     = var.database_port
       protocol    = "tcp"
       cidr_blocks = [ingress.value]
     }

@@ -1,0 +1,32 @@
+aws_region: "us-east-1"
+project_name: "demo-eks-bastion"
+environment: "dev"
+
+# S3 backend bucket — extracted by Makefile to generate dev-bucket.conf
+bucket_name: "demo-eks-bastion-dev-tfstate"
+
+vpc_cidr: "10.30.0.0/16"
+
+public_subnets:
+  public-1:
+    cidr_block: "10.30.0.0/20"
+    availability_zone: "us-east-1a"
+  public-2:
+    cidr_block: "10.30.16.0/20"
+    availability_zone: "us-east-1b"
+
+private_subnets:
+  private-1:
+    cidr_block: "10.30.128.0/20"
+    availability_zone: "us-east-1a"
+  private-2:
+    cidr_block: "10.30.144.0/20"
+    availability_zone: "us-east-1b"
+
+ssh_ingress_cidr: "0.0.0.0/0"
+
+eks_cluster_version: "1.29"
+
+# Disable expensive services in dev
+enable_bastion: false
+enable_eks: false

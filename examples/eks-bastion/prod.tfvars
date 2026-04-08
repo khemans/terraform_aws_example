@@ -4,7 +4,27 @@ environment  = "prod"
 
 vpc_cidr = "10.40.0.0/16"
 
-availability_zones = ["us-east-1a", "us-east-1b"]
+public_subnets = {
+  "public-1" = {
+    cidr_block        = "10.40.0.0/20"
+    availability_zone = "us-east-1a"
+  }
+  "public-2" = {
+    cidr_block        = "10.40.16.0/20"
+    availability_zone = "us-east-1b"
+  }
+}
+
+private_subnets = {
+  "private-1" = {
+    cidr_block        = "10.40.128.0/20"
+    availability_zone = "us-east-1a"
+  }
+  "private-2" = {
+    cidr_block        = "10.40.144.0/20"
+    availability_zone = "us-east-1b"
+  }
+}
 
 ssh_ingress_cidr = "203.0.113.10/32"
 

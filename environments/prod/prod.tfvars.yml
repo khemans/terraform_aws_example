@@ -1,17 +1,45 @@
 aws_region:   "us-east-1"
-project_name: "interview-platform"
+project_name: "platform-prod-env"
 environment:  "prod"
 
 # S3 backend bucket — extracted by Makefile to generate prod-bucket.conf
-bucket_name: "interview-platform-prod-tfstate"
+bucket_name: "platform-prod-env-tfstate"
 
 vpc_cidr: "10.200.0.0/16"
 
-availability_zones:
-  - "us-east-1a"
-  - "us-east-1b"
+public_subnets:
+  public-1:
+    cidr_block: "10.200.0.0/20"
+    availability_zone: "us-east-1a"
+  public-2:
+    cidr_block: "10.200.16.0/20"
+    availability_zone: "us-east-1b"
+
+private_subnets:
+  private-1:
+    cidr_block: "10.200.128.0/20"
+    availability_zone: "us-east-1a"
+  private-2:
+    cidr_block: "10.200.144.0/20"
+    availability_zone: "us-east-1b"
 
 ssh_ingress_cidr: "203.0.113.10/32"
+
+# CloudFront settings
+min_ttl: 0
+default_ttl: 3600
+max_ttl: 86400
+compress: true
+
+# S3 bucket public access block settings
+block_public_acls: true
+block_public_policy: true
+ignore_public_acls: true
+restrict_public_buckets: true
+
+# Database and Redis ports
+database_port: 5432
+redis_port: 6379
 
 eks_cluster_version: "1.29"
 

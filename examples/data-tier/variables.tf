@@ -20,6 +20,24 @@ variable "availability_zones" {
   description = "Two AZs in the target region."
 }
 
+variable "public_subnets" {
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+  }))
+  description = "Map of public subnet configurations."
+  default     = {}
+}
+
+variable "private_subnets" {
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+  }))
+  description = "Map of private subnet configurations."
+  default     = {}
+}
+
 variable "extra_tags" {
   type    = map(string)
   default = {}

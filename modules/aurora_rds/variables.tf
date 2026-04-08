@@ -52,6 +52,12 @@ variable "serverlessv2_max_capacity" {
   default = 1
 }
 
+variable "database_port" {
+  type    = number
+  default = 5432
+  description = "The port on which the database accepts connections."
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

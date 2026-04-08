@@ -19,6 +19,24 @@ variable "availability_zones" {
   type = list(string)
 }
 
+variable "public_subnets" {
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+  }))
+  description = "Map of public subnet configurations."
+  default     = {}
+}
+
+variable "private_subnets" {
+  type = map(object({
+    cidr_block        = string
+    availability_zone = string
+  }))
+  description = "Map of private subnet configurations."
+  default     = {}
+}
+
 variable "ssh_ingress_cidr" {
   type        = string
   description = "Restrict in real use (e.g. x.x.x.x/32)."
